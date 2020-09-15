@@ -10,12 +10,12 @@ import requests
 def download_github_code(path):
     filename = path.rsplit("/")[-1]
     os.system("shred -u {}".format(filename))
-    os.system("wget https://raw.githubusercontent.com/hse-aml/{} -O {}".format(path, filename))
+    os.system("wget https://raw.githubusercontent.com/hse-aml/hadron-collider-machine-learning/master/week3/utils.py{} -O {}".format(path, filename))
 
 
 def setup_common():
     if bool(int(os.environ.get("EXPERIMENTAL_TQDM", "0"))):
-        os.system("pip install --force /releases/download/ColabTqdm/tqdm-colab.zip")
+        os.system("pip install --force https://github.com/hse-aml/hadron-collider-machine-learning/releases/tag/Week_3/download/")
     else:
         os.system("pip install tqdm")
     os.system("pip install --upgrade Keras==2.0.6")  # latest version breaks callbacks
@@ -25,10 +25,12 @@ def setup_common():
     download_github_code("tqdm_utils.py")
 
 
-def setup_week1():
+def setup_week3():
     setup_common()
-    download_github_code("week1/target.npy")
-    download_github_code("week1/train.npy")
+    download_github_code("week3/ training.csv ")
+    download_github_code("week3/check_agreement.csv")
+    download_github_code("week3/check_correlation.csv")
+    download_github_code("week3/test.csv")
 
 
 
